@@ -1,0 +1,34 @@
+# ===============================
+# Author: Pranjal Kumar Shukla
+# GitHub: https://github.com/PranjalKumar09/machine-learning-projects
+# ===============================
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-app-deployment
+  labels:
+    app: ml-app
+spec:
+  replicas: 3  # Number of replicas
+  selector:
+    matchLabels:
+      app: ml-app
+  template:
+    metadata:
+      labels:
+        app: ml-app
+    spec:
+      containers:
+        - name: ml-app
+          image: pranjalkumar09/machine_learning_projects:latest  # Replace with your Docker image URL
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: static-volume
+              mountPath: /app/static  # Make sure to adjust based on your folder structure
+      volumes:
+        - name: static-volume
+          configMap:
+            name: static-files-config  # Will be used to mount static files
