@@ -1,0 +1,7 @@
+matplotlib
+xgboost
+numpy
+nltk==3.9.1
+pandas
+seaborn
+scikit_learn==1.6.1
